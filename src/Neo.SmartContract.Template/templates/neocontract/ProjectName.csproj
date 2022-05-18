@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ProjectReference Include="..\..\..\Neo.SmartContract.Framework\Neo.SmartContract.Framework.csproj">
+      <Aliases>scfx</Aliases>
+  </ProjectReference>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Message Text="Start NeoContract converter, Source File: $(ProjectPath)" Importance="high">
+    </Message>
+    <Exec Command="nccs &quot;$(ProjectPath)&quot;" />
+  </Target>
+
+</Project>
